@@ -2,7 +2,7 @@
 pacman::p_load(pacman, dplyr, tidyr, stringr, readxl, writexl, outliers)
 
 # Rawdata file name
-Name_rawdata_file = "2020-xx-xx CYP TDI 30min assay - 3A4 2C8 2C9 2D6 - Experiment.xlsx"                  # Input rawdata file name
+Name_rawdata_file <- list.files(pattern = "*.xlsx", full.names = T)
 
 # Load raw data
 Rawdata_3A4 <- read_excel(Name_rawdata_file, sheet = "3A4_Midazolam_rawdata")                       
