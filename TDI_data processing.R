@@ -19,7 +19,7 @@ colnames(Df_Cpd_List) <- c("ID", "Project", "Batch", "Concentration (uM)")
 ################ Define variables ########################
 Val_replicate <- 3                                                                                  # 3 for triplicates
 Val_pct_CV_cutoff <- 20                                                                             # Cut-off value of %CV  
-Val_inc_time = 30
+Val_inc_time = 30                                                                                   # Pre-incubation time
 
 Df_Cpd_List <- mutate(Df_Cpd_List,
                       "Structure" = "",
@@ -263,12 +263,21 @@ CDD_upload_all <- mutate(CDD_upload_all,
                          "Comment" = "")
 CDD_upload_all <- CDD_upload_all[ ,c(1:2, 8, 3:7, 9)]
 
+
 # Export final results to excel files
 Val_current_date <- Sys.Date()                                                                                # Get the current date to attach to the file name
 
-List_Summary <- list("Summary" = Data_Summary)
+List_Summary <- list("Summary" = Data_Summary, 
+                     "3A4 (+)NADPH" = Df_CYP3A4_plus,
+                     "3A4 (-)NADPH" = Df_CYP3A4_minus,
+                     "2C8 (+)NADPH" = Df_CYP2C8_plus,
+                     "2C8 (-)NADPH" = Df_CYP2C8_minus,
+                     "2C9 (+)NADPH" = Df_CYP2C9_plus,
+                     "2C9 (-)NADPH" = Df_CYP2C9_minus,
+                     "2D6 (+)NADPH" = Df_CYP2D6_plus,
+                     "2D6 (-)NADPH" = Df_CYP2D6_minus)
 write_xlsx(List_Summary,                                                                                      # Export data for summary to an excel file
-           paste(Val_current_date, " CYP TDI 30min assay - 3A4 2C8 2C9 2D6 - Summary", ".xlsx", sep = ""))  
+           paste(Val_current_date, " CYP TDI 30min assay - 3A4 2C8 2C9 2D6 - Processed data", ".xlsx", sep = ""))  
 
 List_CDD_upload <- list("DatabaseResults" = CDD_upload_all)
 write_xlsx(List_CDD_upload,                                                                                   # Export data for summary to an excel file
