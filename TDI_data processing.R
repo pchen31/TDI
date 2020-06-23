@@ -13,7 +13,7 @@ Df_Cpd_List <- read_excel(Name_rawdata_file, sheet = "Compound List")
 #View(Df_Cpd_List)
 
 # Clean up compound list
-Df_Cpd_List <- Df_Cpd_List[6:37, 2:5]
+Df_Cpd_List <- Df_Cpd_List[7:38, 2:5]
 colnames(Df_Cpd_List) <- c("ID", "Project", "Batch", "Concentration (uM)")
 
 ################ Define variables ########################
